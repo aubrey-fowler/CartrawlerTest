@@ -2,7 +2,7 @@
 
 function loadCarData() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "./src/cars.json", true);
+    xhttp.open("GET", "./src/data/cars.json", true);
     xhttp.send();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
@@ -16,41 +16,20 @@ function processResponse(jsonObj) {
     populateLegend(jsonObj['VehRentalCore']);
     var cars = getCarList(jsonObj['VehVendorAvails']).sort(acendingSortCarsByPrice);
 
-    console.log('cars: ', cars);
     populateCarBlocks(cars);
 
     var carBlock = document.getElementById('car-block');
-    carBlock.addEventListener('click', function (event) {
+    carBlock.onclick = function (event) {
         var carIndex = parseInt(event.target.getAttribute('data-index'), 10);
         if (!isNaN(carIndex)) {
-   
-            var span = document.createElement('span');
-            span.setAttribute('class', 'close');
-            span.innerHTML = '&times';
-            span.onclick = closeModal;
-
-            var modal = document.getElementById('carModal');
-            var carBlock = getCarBlock(cars[carIndex], carIndex);
-            carBlock.insertBefore(span, carBlock.firstChild);
-
-            modal.appendChild(carBlock);
-            modal.style.display = "block";
-
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    closeModal();
-                }
+            if (typeof(Storage) !== "undefined") {
+                sessionStorage.setItem("car", JSON.stringify(cars[carIndex]));
+                window.open("../singleCar.html", "_blank");
+            } else {
+                alert('Sorry! No Web Storage support..');
             }
         }
-    });
-}
-
-function closeModal() {
-    var modal = document.getElementById('carModal');
-    modal.style.display = "none";
-    while(modal.hasChildNodes()) {
-        modal.removeChild(modal.lastChild);
-    }
+    };
 }
 
 function populateLegend(jsonHeaderObj) {
@@ -92,7 +71,7 @@ function acendingSortCarsByPrice(carA, carB) {
     return carA.TotalPrice - carB.TotalPrice;
 }
 
-function getCarBlock(car, index) {
+function getCarBlockNode(car, index) {
     var mainDiv = document.createElement('div');
     mainDiv.setAttribute('class', 'flex-item');
     mainDiv.setAttribute('data-index', index);
@@ -117,6 +96,6 @@ function populateCarBlocks(cars) {
     var carBlock = document.getElementById('car-block');
 
     for (var i = 0; i < cars.length; i++) {
-        carBlock.appendChild(getCarBlock(cars[i], i));
+        carBlock.appendChild(getCarBlockNode(cars[i], i));
     }
 }

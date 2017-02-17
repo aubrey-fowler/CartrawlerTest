@@ -7,27 +7,11 @@
 		<link rel="stylesheet" type="text/css" href="./src/styles/main.css">
 		<title>Car Data</title>
 	</head>
-	<body onload="loadCarData()">
+	<body onload="loadSingleCarData()">
 		<header>
 			<h1>Rent a Car</h1>
 		</header>
-		
-		<section>
-			<h1>Legend</h1>
-			<div class="legend-flex-container">
-			  <div class="legend-flex-item">
-				<h3>Pick Up</h3>
-				<p>Location: <span id="pick-up-location"></span></p>
-				<p>Date/Time: <span id="pick-up-time"></span></p>
-			  </div>
-			  <div class="legend-flex-item">
-				<h3>Drop Off</h3>
-				<p>Location: <span id="drop-off-location"></span></p>
-				<p>Date/Time: <span id="drop-off-time"></span></p>
-			  </div> 
-			</div>
-		</section>
-
+	
 		<section>
 			<h1>Available Cars</h1>
 			<div class="flex-container" id="car-block" />
@@ -37,7 +21,7 @@
 			<p>Copyright 2017 Aubrey Quinn</p>
 		</footer>
 
-		<div id="carModal" class="modal">
 		<script type="text/javascript" src="./src/scripts/main.js"></script>
+		<script type="text/javascript" src="./src/scripts/singleCar.js"></script>
 	</body>
 </html>
