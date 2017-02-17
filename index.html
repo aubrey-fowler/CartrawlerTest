@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="./src/styles/main.css">
+		<title>Car Data</title>
+	</head>
+	<body onload="loadDoc()">
+		<header>
+			<h1>Car Data</h1>
+		</header>
+		
+		<section>
+			<h1>Legend</h1>
+			<div class="legend-flex-container">
+			  <div class="legend-flex-item">
+				<h3>Pick Up</h3>
+				<p>Location: <span id="pick-up-location"></span></p>
+				<p>Date/Time: <span id="pick-up-time"></span></p>
+			  </div>
+			  <div class="legend-flex-item">
+				<h3>Drop Off</h3>
+				<p>Location: <span id="drop-off-location"></span></p>
+				<p>Date/Time: <span id="drop-off-time"></span></p>
+			  </div> 
+			</div>
+		</section>
+
+		<section>
+			<h1>Available Cars</h1>
+			<div class="flex-container" id="car-block" />
+		</section>
+
+		<footer>
+			<p>Copyright 2017 Aubrey Quinn</p>
+		</footer>
+
+		<script type="text/javascript" src="./src/main.js"></script>
+	</body>
+</html>
