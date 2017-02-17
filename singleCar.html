@@ -5,15 +5,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="./src/styles/main.css">
-		<title>Car Data</title>
+		<title>Car Details</title>
 	</head>
-	<body onload="loadSingleCarData()">
-		<header>
-			<h1>Rent a Car</h1>
-		</header>
-	
+	<body onload="SingleCarModule.loadSingleCarData()">
 		<section>
-			<h1>Available Cars</h1>
+			<h1>Car Details</h1>
 			<div class="flex-container" id="car-block" />
 		</section>
 		
@@ -21,7 +17,7 @@
 			<p>Copyright 2017 Aubrey Quinn</p>
 		</footer>
 
-		<script type="text/javascript" src="./src/scripts/main.js"></script>
+		<script type="text/javascript" src="./src/scripts/car.js"></script>
 		<script type="text/javascript" src="./src/scripts/singleCar.js"></script>
 	</body>
 </html>

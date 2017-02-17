@@ -2,12 +2,19 @@ html {
     font-family: 'Open Sans', sans-serif;
 }
 
-img {
+.thumbnail {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
     max-width: 100%;
     height: auto;
+}
+
+.columnul {
+  columns: 3;
+  -webkit-columns: 3;
+  -moz-columns: 3;
+  list-style: none;
 }
 
 .flex-container {

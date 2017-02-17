@@ -1,9 +1,12 @@
 'use strict';
 
-function loadSingleCarData() {
-	var car = JSON.parse(sessionStorage.getItem('car'));
-	console.log(car);
+// create the root namespace and making sure we're not overwriting it
+var SingleCarModule = SingleCarModule || {};
+
+SingleCarModule.loadSingleCarData = function() {
+    var car = JSON.parse(sessionStorage.getItem('car'));
+    console.log(car);
     var carBlock = document.getElementById('car-block');
-    var carNode = getCarBlockNode(car, 0);
-    carBlock.appendChild(carNode);
-}
+    var carNode = getSingleCarBlockNode(car, 0);
+    carBlock.appendChild(carNode);	
+};
