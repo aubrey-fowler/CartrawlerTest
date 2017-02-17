@@ -5,11 +5,12 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="./src/styles/main.css">
+		<link rel="stylesheet" type="text/css" href="./src/styles/modalStyle.css">
 		<title>Car Data</title>
 	</head>
-	<body onload="loadDoc()">
+	<body onload="loadCarData()">
 		<header>
-			<h1>Car Data</h1>
+			<h1>Rent a Car</h1>
 		</header>
 		
 		<section>
@@ -32,11 +33,12 @@
 			<h1>Available Cars</h1>
 			<div class="flex-container" id="car-block" />
 		</section>
-
+		
 		<footer>
 			<p>Copyright 2017 Aubrey Quinn</p>
 		</footer>
 
-		<script type="text/javascript" src="./src/main.js"></script>
+		<div id="carModal" class="modal">
+		<script type="text/javascript" src="./src/scripts/main.js"></script>
 	</body>
 </html>
