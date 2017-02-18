@@ -1,10 +1,10 @@
 'use strict';
 
 // create the root namespace and making sure we're not overwriting it
-// var MainCarModule = MainCarModule || {};
+var MainCarModule = MainCarModule || {};
 
 // car constructor
-function Car(vehicleObj, vendor) {
+MainCarModule.Car = function(vehicleObj, vendor) {
     this.src = vehicleObj['Vehicle']['PictureURL'];
     this.Vendor = vendor;
     this.Make = vehicleObj['Vehicle']['VehMakeModel']['@Name'];
@@ -17,14 +17,15 @@ function Car(vehicleObj, vendor) {
     this.DriveType = vehicleObj['Vehicle']['@DriveType'];
     this.TotalPrice = vehicleObj['TotalCharge']['@RateTotalAmount'];
     this.Currency = vehicleObj['TotalCharge']['@CurrencyCode'];
-}
+
+};
 
 /*
  * could not make this a part of the Car class because when we stringify/de-stringify prototypes and
  * functions are lost
  */
-function getSingleCarBlockNode(car, index) {
-    var mainDiv = document.createElement('div');
+MainCarModule.getSingleCarBlockNode = function(car, index) {
+  var mainDiv = document.createElement('div');
     mainDiv.setAttribute('class', 'flex-item');
     mainDiv.setAttribute('data-index', index);
 
@@ -32,7 +33,7 @@ function getSingleCarBlockNode(car, index) {
     subDiv.setAttribute('class', 'container');
 
     var imgDiv = document.createElement('div');
-    imgDiv.appendChild(getImgNode(car.src));
+    imgDiv.appendChild(this.getImgNode(car.src));
     subDiv.appendChild(imgDiv);
 
     // 3 more columns
@@ -58,16 +59,16 @@ function getSingleCarBlockNode(car, index) {
     mainDiv.appendChild(subDiv);
 
     return mainDiv;
-};
+}
 
-function getImgNode(src) {
+MainCarModule.getImgNode = function(src) {
     var img = document.createElement('img');
     img.src = src;
     img.alt = "img not available";
     img.setAttribute('class', 'thumbnail');
-    return img;
-}
+    return img;  
+};
 
-function acendingSortCarsByPrice(carA, carB) {
+MainCarModule.acendingSortCarsByPrice = function(carA, carB) {
     return carA.TotalPrice - carB.TotalPrice;
-}
+};

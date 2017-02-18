@@ -6,6 +6,6 @@ var SingleCarModule = SingleCarModule || {};
 SingleCarModule.loadSingleCarData = function() {
     var car = JSON.parse(sessionStorage.getItem('car'));
     var carBlock = document.getElementById('car-block');
-    var carNode = getSingleCarBlockNode(car, 0);
+    var carNode = MainCarModule.getSingleCarBlockNode(car, 0);
     carBlock.appendChild(carNode);	
 };

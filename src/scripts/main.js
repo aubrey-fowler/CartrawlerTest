@@ -18,7 +18,7 @@ MainAppModule.loadCarData = function() {
     function processResponse(jsonObj) {
         populateLegendNode(jsonObj['VehRentalCore']);
 
-        var cars = getCarList(jsonObj['VehVendorAvails']).sort(acendingSortCarsByPrice);
+        var cars = getCarList(jsonObj['VehVendorAvails']).sort(MainCarModule.acendingSortCarsByPrice);
         populateCarBlockListNode(cars);
 
         var carBlocks = document.getElementsByClassName('flex-item');
@@ -58,7 +58,7 @@ MainAppModule.loadCarData = function() {
         for (var i = 0; i < jsonVedorsObj.length; i++) {
             var vendor = jsonVedorsObj[i]['Vendor']['@Name'];
             for (var j = 0; j < jsonVedorsObj[i]['VehAvails'].length; j++) {
-                carList.push(new Car(jsonVedorsObj[i]['VehAvails'][j], vendor));
+                carList.push(new MainCarModule.Car(jsonVedorsObj[i]['VehAvails'][j], vendor));
             }
         }
 
@@ -69,7 +69,7 @@ MainAppModule.loadCarData = function() {
         var carBlock = document.getElementById('car-block');
 
         for (var i = 0; i < cars.length; i++) {
-            carBlock.appendChild(getSingleCarBlockNode(cars[i], i));
+            carBlock.appendChild(MainCarModule.getSingleCarBlockNode(cars[i], i));
         }
     }
 };
