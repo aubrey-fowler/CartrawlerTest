@@ -3,7 +3,7 @@
 // create the root namespace and making sure we're not overwriting it
 var MainAppModule = MainAppModule || {};
 
-//public function
+//public function - starting point for app
 MainAppModule.loadCarData = function() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "./src/data/cars.json", true);
@@ -14,11 +14,11 @@ MainAppModule.loadCarData = function() {
         }
     };
 
-    //private functions
+    /* private functions */
     function processResponse(jsonObj) {
         populateLegendNode(jsonObj['VehRentalCore']);
 
-        var cars = getCarList(jsonObj['VehVendorAvails']).sort(MainCarModule.acendingSortCarsByPrice);
+        var cars = getCarList(jsonObj['VehVendorAvails']).sort(MainCarModule.ascendingSortCarsByPrice);
         populateCarBlockListNode(cars);
 
         var carBlocks = document.getElementsByClassName('flex-item');

@@ -3,7 +3,7 @@
 // create the root namespace and making sure we're not overwriting it
 var MainCarModule = MainCarModule || {};
 
-// car constructor
+// Car constructor
 MainCarModule.Car = function(vehicleObj, vendor) {
     this.src = vehicleObj['Vehicle']['PictureURL'];
     this.Vendor = vendor;
@@ -69,6 +69,6 @@ MainCarModule.getImgNode = function(src) {
     return img;  
 };
 
-MainCarModule.acendingSortCarsByPrice = function(carA, carB) {
+MainCarModule.ascendingSortCarsByPrice = function(carA, carB) {
     return carA.TotalPrice - carB.TotalPrice;
 };
