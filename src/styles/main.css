@@ -1,12 +1,9 @@
 html {
-    /*font-family: 'Open Sans', sans-serif;*/
-/*    font-family: 'Century Gothic', sans-serif;*/
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
     background-color: #f1f1f1;
 }
 
 .thumbnail {
-    border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
     max-width: 100%;
@@ -19,7 +16,6 @@ html {
     -webkit-flex-direction: column;
     flex-direction: column;
     width: 100%;
-/*    background-color: lightgrey;*/
 }
 
 .flex-item {
@@ -50,7 +46,9 @@ html {
 
 .container {
     display: flex;
+    display: -webkit-flex;
 }
+
 .container > div {
-    flex: 1; /*grow*/
+    flex: 1;
 }

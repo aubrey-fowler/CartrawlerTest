@@ -27,6 +27,7 @@ MainAppModule.loadCarData = function() {
             carBlocks[i].onclick = onCarClick;
         }
 
+        // on car block click handler
         function onCarClick(event) {
             var carIndex = parseInt(this.getAttribute('data-index'), 10);
 
