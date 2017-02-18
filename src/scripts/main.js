@@ -19,7 +19,6 @@ MainAppModule.loadCarData = function() {
         populateLegendNode(jsonObj['VehRentalCore']);
 
         var cars = getCarList(jsonObj['VehVendorAvails']).sort(acendingSortCarsByPrice);
-        console.log(cars);
         populateCarBlockListNode(cars);
 
         var carBlocks = document.getElementsByClassName('flex-item');
