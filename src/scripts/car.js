@@ -1,7 +1,7 @@
 'use strict';
 
 // create the root namespace and making sure we're not overwriting it
-var MainCarModule = MainCarModule || {};
+// var MainCarModule = MainCarModule || {};
 
 // car constructor
 function Car(vehicleObj, vendor) {
@@ -19,27 +19,54 @@ function Car(vehicleObj, vendor) {
     this.Currency = vehicleObj['TotalCharge']['@CurrencyCode'];
 }
 
+/*
+ * could not make this a part of the Car class because when we stringify/de-stringify prototypes and
+ * functions are lost
+ */
 function getSingleCarBlockNode(car, index) {
     var mainDiv = document.createElement('div');
     mainDiv.setAttribute('class', 'flex-item');
     mainDiv.setAttribute('data-index', index);
 
-    Object.keys(car).forEach(function(key) {
-        if (key === 'src') {
-            var img = document.createElement('img');
-            img.src = car.src;
-            img.alt = "img not available";
-            img.setAttribute('class', 'thumbnail');
-            mainDiv.appendChild(img);
-        } else {
+    var subDiv = document.createElement('div');
+    subDiv.setAttribute('class', 'container');
+
+    var imgDiv = document.createElement('div');
+    imgDiv.appendChild(getImgNode(car.src));
+    subDiv.appendChild(imgDiv);
+
+    // 3 more columns
+    subDiv.appendChild(document.createElement('div'));
+    subDiv.appendChild(document.createElement('div'));
+    subDiv.appendChild(document.createElement('div'));
+
+    var keys = Object.keys(car); //array of keys in car object
+    for (var i = 1; i < keys.length; i++) {
+        var currentKey = keys[i];
+        if (car.hasOwnProperty(currentKey)) {
             var p = document.createElement('p');
-            p.innerHTML = key.replace(/([a-z])([A-Z])/g, '$1 $2') + ': ' + car[key];
-            mainDiv.appendChild(p);
-        }
-    });
+            p.innerHTML = currentKey.replace(/([a-z])([A-Z])/g, '$1 $2') + ': ' + car[currentKey];
+            var div = subDiv.getElementsByTagName("div");
+            for (var j = 3; j > 0; j--) {
+                if (div[j].childNodes.length < 4 ) {
+                    div[j].appendChild(p);
+                }
+            }
+        } 
+    }
+
+    mainDiv.appendChild(subDiv);
 
     return mainDiv;
 };
+
+function getImgNode(src) {
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = "img not available";
+    img.setAttribute('class', 'thumbnail');
+    return img;
+}
 
 function acendingSortCarsByPrice(carA, carB) {
     return carA.TotalPrice - carB.TotalPrice;

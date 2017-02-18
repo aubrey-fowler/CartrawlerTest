@@ -22,9 +22,13 @@ MainAppModule.loadCarData = function() {
         console.log(cars);
         populateCarBlockListNode(cars);
 
-        var carBlock = document.getElementById('car-block');
-        carBlock.onclick = function (event) {
-            var carIndex = parseInt(event.target.getAttribute('data-index'), 10);
+        var carBlocks = document.getElementsByClassName('flex-item');
+        for(var i = 0; i < carBlocks.length; i++) {
+            carBlocks[i].onclick = onCarClick;
+        }
+
+        function onCarClick(event) {
+            var carIndex = parseInt(this.getAttribute('data-index'), 10);
 
             if (!isNaN(carIndex)) {
                 if (typeof(Storage) !== "undefined") {

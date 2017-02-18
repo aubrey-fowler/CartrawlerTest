@@ -1,5 +1,8 @@
 html {
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
+/*    font-family: 'Century Gothic', sans-serif;*/
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    background-color: #f1f1f1;
 }
 
 .thumbnail {
@@ -10,27 +13,20 @@ html {
     height: auto;
 }
 
-.columnul {
-  columns: 3;
-  -webkit-columns: 3;
-  -moz-columns: 3;
-  list-style: none;
-}
-
 .flex-container {
     display: -webkit-flex;
     display: flex;
     -webkit-flex-direction: column;
     flex-direction: column;
     width: 100%;
-    background-color: lightgrey;
+/*    background-color: lightgrey;*/
 }
 
 .flex-item {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-    background-color: cornflowerblue;
+    background-color: white;
     margin: 10px;
 }
 
@@ -39,14 +35,22 @@ html {
 }
 
 .legend-flex-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
     display: -webkit-flex;
     display: flex;
     width: 100%;
-    background-color: lightgrey;
 }
 
 .legend-flex-item {
-    background-color: cornflowerblue;
+    padding: 5px;
     width: 100%;
     margin: 10px;
+}
+
+.container {
+    display: flex;
+}
+.container > div {
+    flex: 1; /*grow*/
 }
